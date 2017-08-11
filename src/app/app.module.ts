@@ -3,7 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { AppComponent } from './app.component';
+import {TodoStore} from './todo.store';
+import { environment } from "environments/environment";
+
 
 @NgModule({
   declarations: [
@@ -12,9 +18,11 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [TodoStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

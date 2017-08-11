@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TodoStore, Todo } from "app/todo.store";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'app works!';
+
+  public newTodoText : string;
+
+  constructor(public store : TodoStore){
+
+  }
+
+    addTodo(){
+    if (this.newTodoText.trim().length) {
+      this.store.add(this.newTodoText);
+      this.newTodoText = '';
+    }
+  }
+  
 }
